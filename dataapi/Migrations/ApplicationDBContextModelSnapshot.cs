@@ -28,6 +28,10 @@ namespace dataapi.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
+                    b.Property<string>("Type");
+
+                    b.Property<string>("Unit");
+
                     b.HasKey("DISPENSELOGID");
 
                     b.ToTable("TBL_DISPENSELOG");

@@ -9,6 +9,8 @@ namespace dataapi.Model
         [Required]
         public Guid DISPENSELOGID { get; set; }
         public Decimal Amount { get; set; }
+        public string Unit { get; set; }
+        public string Type { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
     }

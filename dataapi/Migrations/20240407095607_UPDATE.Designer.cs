@@ -10,8 +10,8 @@ using dataapi.Model;
 namespace dataapi.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240405052007_MyFirstMigration1")]
-    partial class MyFirstMigration1
+    [Migration("20240407095607_UPDATE")]
+    partial class UPDATE
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,10 @@ namespace dataapi.Migrations
                     b.Property<decimal>("Amount");
 
                     b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Type");
+
+                    b.Property<string>("Unit");
 
                     b.HasKey("DISPENSELOGID");
 
