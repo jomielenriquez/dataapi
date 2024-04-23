@@ -29,6 +29,18 @@ namespace dataapi
         {
             services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Add CORS policy
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +54,9 @@ namespace dataapi
             {
                 app.UseHsts();
             }
+            
+            // Apply CORS policy
+            app.UseCors("AllowAnyOrigin");
 
             app.UseHttpsRedirection();
             app.UseMvc();
