@@ -21,13 +21,15 @@ namespace dataapi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<TBL_DISPENSELOG>> Get()
         {
-            return this._context.TBL_DISPENSELOG.ToList();
+            return this._context.TBL_DISPENSELOG.OrderByDescending(x => x.CreatedDate).ToList();
         }
 
         [HttpPost]
         public ActionResult<TBL_DISPENSELOG> PostDispense(TBL_DISPENSELOG dispenselog)
         {
-            dispenselog.CreatedDate = DateTime.Now;
+            DateTime utcTime = DateTime.UtcNow;
+            
+            dispenselog.CreatedDate = utcTime.AddHours(8);
             this._context.TBL_DISPENSELOG.Add(dispenselog);
             this._context.SaveChanges();
 

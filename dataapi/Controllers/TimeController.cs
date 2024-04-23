@@ -13,7 +13,9 @@ namespace dataapi.Controllers
         [HttpGet]
         public ActionResult<DateTime> Get()
         {
-            return DateTime.Now;
+            DateTime utcTime = DateTime.UtcNow;
+
+            return utcTime.AddHours(8);
         }
     }
 }
